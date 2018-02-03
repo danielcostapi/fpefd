@@ -1,7 +1,7 @@
 <?php
 	$host	= "localhost";   //IP da hospedagem, dedicado ou servidor Local
 	$user	= "root";        //usuario do Mysql (Padrao = root)
-	$senha	= "root";        //senha do mysql (padrao sem senha)
+	$senha	= "";        //senha do mysql (padrao sem senha)
 	$dbname	= "fpefd";    //Nome do banco de dados
 	
 	//Não mecher na linha abaixo (conexao com banco de dados)
