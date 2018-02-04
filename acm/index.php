@@ -38,8 +38,7 @@ include("configs/conexao.php");
 		?>
 		
 		<div id="login" class="login">
-        	
-                       
+        	                       
 			<form action=""  method="post" enctype="multipart/form-data">
 				<input type="text" name="login" id="usuario" placeholder="Inserir Usuário"/>
 				<input type="password" name="senha" id="senha" placeholder="Inserir Senha"/>
@@ -49,7 +48,7 @@ include("configs/conexao.php");
 				
 			</form>
             
-           		<?php
+           	<?php
 			if(isset($_POST['logar'])){
 			
 					
