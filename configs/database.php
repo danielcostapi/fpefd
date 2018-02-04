@@ -1,5 +1,4 @@
 <?php
-	
 	// Deleta Registros
 	function DBDelete($table, $where = null){
 		$table 	= DB_PREFIX.'_'.$table;

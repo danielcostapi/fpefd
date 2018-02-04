@@ -1,8 +1,10 @@
 <?php
 session_start();
-//include $_SERVER['DOCUMENT_ROOT'] . '/fpefd/configs/conexao.php'; // Remover fpefd/ em ambiente de produção...
-include("configs/config.php");
-include("configs/conexao.php");
+
+include("configs/config_admin.php");
+require_once '../configs/config.php';
+require_once '../configs/database.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -49,32 +51,27 @@ include("configs/conexao.php");
 			</form>
             
            	<?php
-			if(isset($_POST['logar'])){
-			
-					
-				$login = $_POST['login'];
-				$senha = MD5($_POST['senha']);
+				if(isset($_POST['logar'])){
 				
-				$verifica = mysqli_query($conexao,"SELECT * FROM usuarios WHERE login = '$login' AND password = '$senha'") or die("erro ao selecionar");
-				$linhas = $verifica->num_rows;
-					if($linhas > 0)
-						{
-							$_SESSION['logins'] = $login;
-							$url = $_SERVER['REQUEST_URI'];
-							echo '<br><br><br><div class="alert alert-success">
-									<strong>Sucesso!</strong> Autenticando login para uma conexão segura. <img src="dist/img/loader.gif" class="loader" alt=""/>
+				
+					$login['login']      = DBEscape( strip_tags( trim( $_POST['login'] ) ) );
+					$login['password']   = md5($_POST["senha"]);
+					$Chek = DBRead('login', "WHERE password = '". $login['password'] ."'"  );	
+
+					if( $Chek ){
+						$_SESSION['logins'] = $login;
+						$url = $_SERVER['REQUEST_URI'];
+						echo '<br><br><br><div class="alert alert-success">
+							<strong>Sucesso!</strong> Autenticando login para uma conexão segura. <img src="dist/img/loader.gif" class="loader" alt=""/>
+							</div>';
+						header("Refresh:3, $url");
+					}
+					else{
+					   echo '<br><br><br><div class="alert alert-danger">
+									<strong>Erro ao logar!</strong> Usuário e/ou Senha incorretos. 
 								  </div>';
-							header("Refresh:3, $url");
-						}
-						else
-						{
-							
-							 echo '<br><br><br><div class="alert alert-danger">
-					            <strong>Erro ao logar!</strong> Usuário e/ou Senha incorretos. 
-					          </div>';
-							  die();
-						} 
-							
+								  die();
+					}
 				}
 			?>
             
@@ -85,6 +82,7 @@ include("configs/conexao.php");
 			}
 		?>
 
+		
 <!--**************************** Caso o login seja autorizado executa o codigo abaixo ***********************  -->
 <div class="wrapper">
   <header class="main-header">

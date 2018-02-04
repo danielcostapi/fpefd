@@ -44,7 +44,8 @@ require_once 'configs/database.php';
                                 $login['login']               = DBEscape( strip_tags( trim( $_POST['login'] ) ) );
                                 $login['password']            = md5($_POST["password"]);
                                 $login['email']               = DBEscape( strip_tags( trim( $_POST['email'] ) ) );
-                                $dados['nome']                = DBEscape( strip_tags( trim( $_POST['nome'] ) ) );
+                                $dados['login']               = $login['login'];
+								$dados['nome']                = DBEscape( strip_tags( trim( $_POST['nome'] ) ) );
                                 $dados['apelido_gamer']       = DBEscape( strip_tags( trim( $_POST['apelido_gamer'] ) ) );
                                 $dados['dt_nasc']             = DBEscape( strip_tags( trim( $_POST['dt_nasc'] ) ) );
                                 $dados['telefone_zap']        = DBEscape( strip_tags( trim( $_POST['telefone_zap'] ) ) );
@@ -83,6 +84,7 @@ require_once 'configs/database.php';
                                         	echo "<script type=\"text/javascript\">
                                         alert(\"Usuario cadastrado com Sucesso.\");
                                         </script>";
+										
                                         else
                                             echo "<script type=\"text/javascript\">
                                         alert(\"Desculpe, Ocorreu um erro.\");

@@ -4,61 +4,50 @@ Source Host: localhost
 Source Database: fpefd
 Target Host: localhost
 Target Database: fpefd
-Date: 01/02/2018 22:30:07
+Date: 03/02/2018 22:31:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
--- Table structure for usuarios
+-- Table structure for bd_login
 -- ----------------------------
-CREATE TABLE `usuarios` (
+CREATE TABLE `bd_login` (
+  `id_login` int(11) NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `is_admin` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_login`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for bd_perfil
+-- ----------------------------
+CREATE TABLE `bd_perfil` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
-  `login` varchar(45) NOT NULL DEFAULT '',
-  `password` varchar(45) NOT NULL,
-  `score` int(5) DEFAULT NULL,
-  `is_admin` int(2) NOT NULL,
-  `ultimoIP` varchar(20) DEFAULT NULL,
+  `login` varchar(50) NOT NULL,
   `nome` varchar(60) NOT NULL,
-  `email` varchar(60) NOT NULL,
   `apelido_gamer` varchar(60) NOT NULL,
   `dt_nasc` date NOT NULL,
-  `telefone_zap` decimal(15,0) NOT NULL,
-  `telefone_resid` decimal(15,0) NOT NULL,
-  `sexo` int(2) NOT NULL,
+  `telefone_zap` varchar(15) NOT NULL,
+  `telefone_resid` varchar(15) NOT NULL,
+  `sexo` varchar(30) NOT NULL,
   `psn_live` varchar(20) NOT NULL,
-  `endereco` varchar(255) NOT NULL,
-  `estado` varchar(20) NOT NULL,
-  `cidade` varchar(20) NOT NULL,
+  `cep` varchar(11) NOT NULL,
+  `rua` varchar(255) NOT NULL,
   `bairro` varchar(20) NOT NULL,
-  `CPF` decimal(11,0) NOT NULL,
+  `cidade` varchar(20) NOT NULL,
+  `uf` varchar(2) NOT NULL,
+  `CPF` varchar(20) NOT NULL,
   `responsavel` varchar(60) DEFAULT NULL,
   `foto` varchar(800) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for web_configs
--- ----------------------------
-CREATE TABLE `web_configs` (
-  `visitas` varchar(255) NOT NULL DEFAULT '',
-  `manutencao` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`visitas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for web_noticias
--- ----------------------------
-CREATE TABLE `web_noticias` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(255) DEFAULT NULL,
-  `data` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `noticia` text,
-  `visualizacoes` varchar(255) DEFAULT '1',
-  `titulo_reduzido` text,
-  `em_destaque` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records 
 -- ----------------------------
+INSERT INTO `bd_login` VALUES ('1', 'erere', '2bbf803161deb1186defbefb8b4b0903', 'danielluis2@gmail.com', '0');
+INSERT INTO `bd_login` VALUES ('2', 'diego', '078c007bd92ddec308ae2f5115c1775d', 'diegobarbosasantos@gmail.com', null);
+INSERT INTO `bd_perfil` VALUES ('1', 'erere', 'Daniel Luis Batista', 'aa', '2018-02-10', '(34) 34343-4343', '(34) 34343-4343', 'Masculino', '34', '64685000', 'eferrerr', 'erer', 'Marcolândia', 'PI', '343.434.343-4', 're', 'rerer');
+INSERT INTO `bd_perfil` VALUES ('2', 'diego', 'DIEGO BARBOSA DOS SANTOS', 'diego', '1988-07-26', '(81) 98668-0882', '81986680882', 'Masculino', '123456', '50920090', 'Rua Manuel Inácio', 'Jardim São Paulo', 'Recife', 'PE', '999.999.999-99', '', '3x4');
