@@ -1,7 +1,8 @@
 <?php
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . '/fpefd/configs/conexao.php'; // Remover fpefd/ em ambiente de produção...
+//include $_SERVER['DOCUMENT_ROOT'] . '/fpefd/configs/conexao.php'; // Remover fpefd/ em ambiente de produção...
 include("configs/config.php");
+include("configs/conexao.php");
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ include("configs/config.php");
   <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="css/login.css" />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,8 +32,62 @@ include("configs/config.php");
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+		
+		<?php
+			if(!isset($_SESSION["logins"])){
+		?>
+		
+		<div id="login" class="login">
+        	
+                       
+			<form action=""  method="post" enctype="multipart/form-data">
+				<input type="text" name="login" id="usuario" placeholder="Inserir Usuário"/>
+				<input type="password" name="senha" id="senha" placeholder="Inserir Senha"/>
+				<a href="#" class="forgot">Recuperar Senha?</a>
+				<input type="submit" name="logar" id="logar" value="Logar"/>
+				 
+				
+			</form>
+            
+           		<?php
+			if(isset($_POST['logar'])){
+			
+					
+				$login = $_POST['login'];
+				$senha = MD5($_POST['senha']);
+				
+				$verifica = mysqli_query($conexao,"SELECT * FROM usuarios WHERE login = '$login' AND password = '$senha'") or die("erro ao selecionar");
+				$linhas = $verifica->num_rows;
+					if($linhas > 0)
+						{
+							$_SESSION['logins'] = $login;
+							$url = $_SERVER['REQUEST_URI'];
+							echo '<br><br><br><div class="alert alert-success">
+									<strong>Sucesso!</strong> Autenticando login para uma conexão segura. <img src="dist/img/loader.gif" class="loader" alt=""/>
+								  </div>';
+							header("Refresh:3, $url");
+						}
+						else
+						{
+							
+							 echo '<br><br><br><div class="alert alert-danger">
+					            <strong>Erro ao logar!</strong> Usuário e/ou Senha incorretos. 
+					          </div>';
+							  die();
+						} 
+							
+				}
+			?>
+            
+        </div>
+	
+		<?php
+				exit; /* Encerra a execução enquanto nao passar do login*/
+			}
+		?>
 
+<!--**************************** Caso o login seja autorizado executa o codigo abaixo ***********************  -->
+<div class="wrapper">
   <header class="main-header">
 
     <!-- Logo -->
@@ -105,7 +161,7 @@ include("configs/config.php");
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="./paginas/sair.php"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       
