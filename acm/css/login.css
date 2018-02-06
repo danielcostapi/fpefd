@@ -8,7 +8,7 @@
   background: #eceeee;
   border: 1px solid #42464b;
   border-radius: 6px;
-  height: 257px;
+  height: 357px;
   margin: 50px auto 0;
   width: 298px;
 }
@@ -34,7 +34,7 @@ input[type="password"], input[type="text"] {
   box-sizing: border-box;
   color: #696969;
   height: 39px;
-  margin: 31px 0 0 29px;
+  margin: 11px 0 0 29px;
   padding-left: 37px;
   transition: box-shadow 0.3s;
   width: 240px;
