@@ -1,31 +1,55 @@
-/*
-MySQL Data Transfer
-Source Host: localhost
-Source Database: fpefd
-Target Host: localhost
-Target Database: fpefd
-Date: 03/02/2018 22:31:21
-*/
+﻿-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: 08-Fev-2018 às 12:17
+-- Versão do servidor: 5.7.14
+-- PHP Version: 7.0.10
 
-SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for bd_login
--- ----------------------------
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `fpefd`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `bd_login`
+--
+
 CREATE TABLE `bd_login` (
-  `id_login` int(11) NOT NULL AUTO_INCREMENT,
+  `id_login` int(11) NOT NULL,
   `login` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `is_admin` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_login`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `is_admin` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Table structure for bd_perfil
--- ----------------------------
+--
+-- Extraindo dados da tabela `bd_login`
+--
+
+INSERT INTO `bd_login` (`id_login`, `login`, `password`, `email`, `is_admin`) VALUES
+(1, 'sadddsad22', 'f075d149f56ca7a7414bb4f94e0a25be', 'danielluis2@gmail.com', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `bd_perfil`
+--
+
 CREATE TABLE `bd_perfil` (
-  `id` int(255) NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) NOT NULL,
+  `id` int(255) NOT NULL,
+  `login` varchar(100) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `apelido_gamer` varchar(60) NOT NULL,
   `dt_nasc` date NOT NULL,
@@ -40,14 +64,46 @@ CREATE TABLE `bd_perfil` (
   `uf` varchar(2) NOT NULL,
   `CPF` varchar(20) NOT NULL,
   `responsavel` varchar(60) DEFAULT NULL,
-  `foto` varchar(800) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
--- Records 
--- ----------------------------
-INSERT INTO `bd_login` VALUES ('1', 'erere', '2bbf803161deb1186defbefb8b4b0903', 'danielluis2@gmail.com', '0');
-INSERT INTO `bd_login` VALUES ('2', 'diego', '078c007bd92ddec308ae2f5115c1775d', 'diegobarbosasantos@gmail.com', null);
-INSERT INTO `bd_perfil` VALUES ('1', 'erere', 'Daniel Luis Batista', 'aa', '2018-02-10', '(34) 34343-4343', '(34) 34343-4343', 'Masculino', '34', '64685000', 'eferrerr', 'erer', 'Marcolândia', 'PI', '343.434.343-4', 're', 'rerer');
-INSERT INTO `bd_perfil` VALUES ('2', 'diego', 'DIEGO BARBOSA DOS SANTOS', 'diego', '1988-07-26', '(81) 98668-0882', '81986680882', 'Masculino', '123456', '50920090', 'Rua Manuel Inácio', 'Jardim São Paulo', 'Recife', 'PE', '999.999.999-99', '', '3x4');
+--
+-- Extraindo dados da tabela `bd_perfil`
+--
+
+INSERT INTO `bd_perfil` (`id`, `login`, `nome`, `apelido_gamer`, `dt_nasc`, `telefone_zap`, `telefone_resid`, `sexo`, `psn_live`, `cep`, `rua`, `bairro`, `cidade`, `uf`, `CPF`, `responsavel`, `foto`) VALUES
+(1, 'sadddsad22', 'Daniel Masculino Luis', 'sdsadsdsad', '2018-02-08', '(89) 99448-5110', '', '0', 'sadsadsadsad', '', '', '', '', '', '', '', '85003c4d2b63f8c576cb74e7689b4f26.jpg');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bd_login`
+--
+ALTER TABLE `bd_login`
+  ADD PRIMARY KEY (`id_login`);
+
+--
+-- Indexes for table `bd_perfil`
+--
+ALTER TABLE `bd_perfil`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bd_login`
+--
+ALTER TABLE `bd_login`
+  MODIFY `id_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `bd_perfil`
+--
+ALTER TABLE `bd_perfil`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
