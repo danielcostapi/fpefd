@@ -16,7 +16,7 @@ $conn = DBConnect();
 
 		<div class="list-group-item section-header active text-center">
 			<a name="form"></a>
-			<h2><span class="glyphicon glyphicon-thumbs-up"></span> É só completar o <b>cadastro</b> e criar uma senha<br> para acessar a área exclusiva do Cyber-Atleta.</h2>
+			<h2><span class="glyphicon glyphicon-thumbs-up"></span>É só completar o <b>cadastro</b> e criar uma senha<br> para acessar a área exclusiva do Cyber-Atleta.</h2>
 			<br>
 		</div>
 
