@@ -3,26 +3,7 @@
   <!--==========================
     Intro Section
   ============================-->
-  <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
 
-        <ol class="carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active" style="background-image: url('img/intro-carousel/1.jpg');">
-            <div class="carousel-container">
-             <!-- --> 
-            </div>
-          </div>
-
-
-        </div>
-        
-      </div>
-    </div>
-  </section><!-- #intro -->
 
   <main id="main">
 
