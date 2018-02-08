@@ -6,6 +6,8 @@ require_once ('../configs/config.php');
 require_once ('../configs/database.php');
 
 include_once ('../securimage/securimage.php');
+
+
 $securimage = new Securimage();
 ?>
 <!DOCTYPE html>
