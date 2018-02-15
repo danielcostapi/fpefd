@@ -9,6 +9,8 @@ include_once ('../securimage/securimage.php');
 
 
 $securimage = new Securimage();
+
+$conn = DBConnect();
 ?>
 <!DOCTYPE html>
 <html>
